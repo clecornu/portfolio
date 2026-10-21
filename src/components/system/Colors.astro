@@ -2,55 +2,42 @@
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import Row from "@/components/system/Row.astro";
 const colors = [
-  {
-    name: "Background",
-    token: "--color-background",
-    use: "The page, the navigation and the text on default buttons.",
-    swatch: "bg-background border border-muted",
-  },
-  {
-    name: "Foreground",
-    token: "--color-foreground",
-    use: "Headings, titles and default buttons.",
-    swatch: "bg-foreground",
-  },
-  {
-    name: "Muted",
-    token: "--color-muted",
-    use: "Dividers between entries and muted buttons.",
-    swatch: "bg-muted",
-  },
-  {
-    name: "Muted foreground",
-    token: "--color-muted-foreground",
-    use: "Descriptions, labels, the navigation and the footer.",
-    swatch: "bg-muted-foreground",
-  },
+  { name: "Background", token: "--color-background", light: "oklch(1 0 0)", dark: "oklch(0.145 0 0)", class: "bg-background ring-1 ring-inset ring-muted" },
+  { name: "Foreground", token: "--color-foreground", light: "oklch(0.205 0 0)", dark: "oklch(0.985 0 0)", class: "bg-foreground" },
+  { name: "Muted", token: "--color-muted", light: "oklch(0.922 0 0)", dark: "oklch(0.269 0 0)", class: "bg-muted" },
+  { name: "Muted foreground", token: "--color-muted-foreground", light: "oklch(0.439 0 0)", dark: "oklch(0.87 0 0)", class: "bg-muted-foreground" },
 ];
 ---
 
 <section>
   <Wrapper variant="standard" class="py-12 lg:py-24">
-    <div class="flex flex-col">
-      {
-        colors.map((color) => (
-          <article class="py-12 border-t border-muted">
-            <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start">
-              <Text tag="p" variant="textXS" class="text-muted-foreground">
-                {color.token}
-              </Text>
-              <Text tag="h2" variant="textLG" class="text-foreground leading-tight font-semibold text-pretty">
-                {color.name}
-              </Text>
-              <Text tag="p" variant="textSM" class="text-muted-foreground">
-                {color.use}
-              </Text>
-              <div class:list={["h-24 rounded-4xl", color.swatch]} />
-            </div>
-          </article>
-        ))
-      }
-    </div>
+    <Row name="Neutrals" text="The page, the text and the lines, in src/styles/global.css. Each has a light and a dark value.">
+      <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4">
+        {
+          colors.map((color) => (
+            <li class="flex flex-col gap-3">
+              <span class:list={["aspect-4/3", color.class]} aria-hidden="true" />
+              <div>
+                <Text tag="p" variant="textSM" class="font-medium text-foreground">
+                  {color.name}
+                </Text>
+                <Text tag="p" variant="textXS" class="mt-1 text-muted-foreground">
+                  {color.token}
+                </Text>
+                <Text tag="p" variant="textXS" class="text-muted-foreground">
+                  Light {color.light}
+                </Text>
+                <Text tag="p" variant="textXS" class="text-muted-foreground">
+                  Dark {color.dark}
+                </Text>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </Row>
   </Wrapper>
 </section>
