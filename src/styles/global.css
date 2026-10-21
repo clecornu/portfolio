@@ -5,28 +5,19 @@
 @theme {
   /* Typography */
   --font-sans: "Inter", sans-serif;
-  /* accent  */
-  --color-accent-50: oklch(0.982 0.029 125.9);
-  --color-accent-100: oklch(0.961 0.065 127.2);
-  --color-accent-200: oklch(0.925 0.122 129.7);
-  --color-accent-300: oklch(0.877 0.179 131.4);
-  --color-accent-400: oklch(0.839 0.199 132.6);
-  --color-accent-500: oklch(0.744 0.209 135);
-  --color-accent-600: oklch(0.628 0.18 135.7);
-  --color-accent-700: oklch(0.517 0.143 135.4);
-  --color-accent-800: oklch(0.441 0.115 134.8);
-  --color-accent-900: oklch(0.394 0.096 135);
-  --color-accent-950: oklch(0.268 0.069 135.7);
-  /* base*/
-  --color-base-50: oklch(0.985 0 0);
-  --color-base-100: oklch(0.97 0 0);
-  --color-base-200: oklch(0.922 0 0);
-  --color-base-300: oklch(0.87 0 0);
-  --color-base-400: oklch(0.708 0 0);
-  --color-base-500: oklch(0.556 0 0);
-  --color-base-600: oklch(0.439 0 0);
-  --color-base-700: oklch(0.371 0 0);
-  --color-base-800: oklch(0.269 0 0);
-  --color-base-900: oklch(0.205 0 0);
-  --color-base-950: oklch(0.145 0 0);
+  /* Colors */
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.205 0 0);
+  --color-muted: oklch(0.922 0 0);
+  --color-muted-foreground: oklch(0.439 0 0);
+}
+
+/* The theme follows the system colour scheme. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: oklch(0.145 0 0);
+    --color-foreground: oklch(0.985 0 0);
+    --color-muted: oklch(0.269 0 0);
+    --color-muted-foreground: oklch(0.87 0 0);
+  }
 }

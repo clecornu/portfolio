@@ -1,0 +1,61 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Icons
+import Plus from "@/components/fundations/icons/Plus.astro";
+const variants = [
+  { name: "Default", variant: "default", use: "The main action of a block." },
+  { name: "Muted", variant: "muted", use: "A quieter, second action." },
+];
+const sizes = [
+  { size: "xxs", label: "XXS", icon: "sm" },
+  { size: "xs", label: "XS", icon: "sm" },
+  { size: "sm", label: "SM", icon: "base" },
+  { size: "base", label: "Base", icon: "base" },
+  { size: "md", label: "MD", icon: "lg" },
+  { size: "lg", label: "LG", icon: "xl" },
+  { size: "xl", label: "XL", icon: "xl" },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12 lg:py-24">
+    <div class="flex flex-col">
+      {
+        variants.map((item) => (
+          <article class="py-12 border-t border-muted">
+            <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start">
+              <Text tag="p" variant="textXS" class="text-muted-foreground">
+                variant="{item.variant}"
+              </Text>
+              <Text tag="h2" variant="textLG" class="text-foreground leading-tight font-semibold text-pretty">
+                {item.name}
+              </Text>
+              <Text tag="p" variant="textSM" class="text-muted-foreground lg:col-span-2">
+                {item.use}
+              </Text>
+            </div>
+            <div class="grid grid-cols-1 gap-4 mt-12 lg:grid-cols-4">
+              <div class="flex flex-wrap items-center gap-4 lg:col-span-3 lg:col-start-2">
+                {sizes.map((size) => (
+                  <Button size={size.size} variant={item.variant}>
+                    {item.name} {size.label}
+                  </Button>
+                ))}
+              </div>
+              <div class="flex flex-wrap items-center gap-4 lg:col-span-3 lg:col-start-2">
+                {sizes.map((size) => (
+                  <Button size={size.size} variant={item.variant} iconOnly aria-label={`${item.name} ${size.label} icon button`}>
+                    <Plus slot="icon" size={size.icon} />
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </Wrapper>
+</section>

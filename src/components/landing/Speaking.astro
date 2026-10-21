@@ -62,7 +62,7 @@ const speechesAndTalks = [
   <Wrapper variant="standard" class="py-12 lg:py-24">
     <div class="grid grid-cols-1 lg:grid-cols-4 items-start">
       <div class="lg:col-start-2">
-        <Text tag="p" variant="textSM" class="text-base-600 dark:text-base-300">
+        <Text tag="p" variant="textSM" class="text-muted-foreground">
           Speeches & Talks
           <br />
           Selected Sessions
@@ -71,7 +71,7 @@ const speechesAndTalks = [
       <Text
         tag="h2"
         variant="textXL"
-        class="font-semibold leading-snug tracking-tighter lg:col-span-2 text-base-900 dark:text-white"
+        class="font-semibold leading-snug tracking-tighter lg:col-span-2 text-foreground"
       >
         Speeches & Talks
       </Text>
@@ -79,13 +79,13 @@ const speechesAndTalks = [
     <div class="flex flex-col gap-12 mt-12">
       {
         speechesAndTalks.map((item) => (
-          <article class="py-12 border-t border-base-200 dark:border-base-800">
+          <article class="py-12 border-t border-muted">
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start">
               {/* Year */}
               <Text
                 tag="p"
                 variant="textXS"
-                class="text-base-600 dark:text-base-300 uppercase"
+                class="text-muted-foreground uppercase"
               >
                 {item.period} — {item.category.label}
               </Text>
@@ -93,7 +93,7 @@ const speechesAndTalks = [
               <Text
                 tag="h3"
                 variant="textLG"
-                class="text-base-900 dark:text-white leading-tight font-semibold"
+                class="text-foreground leading-tight font-semibold"
               >
                 {item.title}
               </Text>
@@ -101,14 +101,14 @@ const speechesAndTalks = [
               <Text
                 tag="p"
                 variant="textSM"
-                class="text-base-600 dark:text-base-300"
+                class="text-muted-foreground"
               >
                 {item.description}
               </Text>
               {/* Category (linked, original position) */}
               <a
                 href={item.category.href}
-                class=" lg:ml-auto text-base-900 dark:text-white hover:text-accent-600 transition"
+                class=" lg:ml-auto text-foreground hover:text-muted-foreground transition"
               >
                 <span class="sr-only"> Visit {item.category.label}</span>
                 <ArrowRight class="size-4" />

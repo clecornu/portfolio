@@ -9,8 +9,8 @@ Prima Persona is a one-page personal portfolio theme built with Astro and Tailwi
 
 - `src/pages/index.astro` - the landing page, composed of `src/components/landing/` sections.
 - `src/components/fundations/` - design primitives: `elements/Text.astro`, `elements/Button.astro`, `containers/Wrapper.astro`, `icons/`, `head/`.
-- `src/styles/global.css` - Tailwind v4 `@theme` tokens (the `accent` and `base` color scales, Inter font).
-- `src/pages/system/` - component showcase pages (typography, colors, buttons, links).
+- `src/styles/global.css` - Tailwind v4 `@theme` tokens (four semantic colours, `background`, `foreground`, `muted` and `muted-foreground`, with dark values for `prefers-color-scheme`; Inter font).
+- `src/pages/system/` - showcase pages (overview, colors, typography, buttons, links), composed of `src/components/system/` sections.
 
 ## Conventions
 

@@ -15,18 +15,18 @@ const links = [
 ];
 ---
 
-<nav class="bg-white dark:bg-base-950 fixed top-0 z-10 w-full">
+<nav class="bg-background fixed top-0 z-10 w-full">
   <Wrapper variant="standard" class="py-2">
     <div class="grid grid-cols-3 lg:grid-cols-4 items-start">
       <a href="/" class="-mt-1 flex">
         <Logo
-          class="text-base-600 dark:text-base-300 text-xs tracking-tight font-base-900"
+          class="text-muted-foreground text-xs tracking-tight"
         />
       </a>
       <Text
         tag="p"
         variant="textXS"
-        class="text-base-600 dark:text-base-300 tracking-tight font-base"
+        class="text-muted-foreground tracking-tight"
       >
         Helsinki, Finland<br />Creative Technologist
       </Text>
@@ -35,7 +35,7 @@ const links = [
           links.map((link) => (
             <a
               href={link.href}
-              class="text-base-600 dark:text-base-300  tracking-tight text-xs"
+              class="text-muted-foreground  tracking-tight text-xs"
             >
               {link.text}
             </a>
@@ -43,7 +43,7 @@ const links = [
         }
       </div>
       <a href="https://lexingtonthemes.com/templates/primapersona"
-        class="text-base-600 dark:text-base-300 text-xs tracking-tight font-base ml-auto"
+        class="text-muted-foreground text-xs tracking-tight ml-auto"
         >Download
       </a>
     </div>

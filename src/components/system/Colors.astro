@@ -1,0 +1,56 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const colors = [
+  {
+    name: "Background",
+    token: "--color-background",
+    use: "The page, the navigation and the text on default buttons.",
+    swatch: "bg-background border border-muted",
+  },
+  {
+    name: "Foreground",
+    token: "--color-foreground",
+    use: "Headings, titles and default buttons.",
+    swatch: "bg-foreground",
+  },
+  {
+    name: "Muted",
+    token: "--color-muted",
+    use: "Dividers between entries and muted buttons.",
+    swatch: "bg-muted",
+  },
+  {
+    name: "Muted foreground",
+    token: "--color-muted-foreground",
+    use: "Descriptions, labels, the navigation and the footer.",
+    swatch: "bg-muted-foreground",
+  },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12 lg:py-24">
+    <div class="flex flex-col">
+      {
+        colors.map((color) => (
+          <article class="py-12 border-t border-muted">
+            <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start">
+              <Text tag="p" variant="textXS" class="text-muted-foreground">
+                {color.token}
+              </Text>
+              <Text tag="h2" variant="textLG" class="text-foreground leading-tight font-semibold text-pretty">
+                {color.name}
+              </Text>
+              <Text tag="p" variant="textSM" class="text-muted-foreground">
+                {color.use}
+              </Text>
+              <div class:list={["h-24 rounded-4xl", color.swatch]} />
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </Wrapper>
+</section>
