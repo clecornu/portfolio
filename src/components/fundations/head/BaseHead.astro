@@ -3,10 +3,23 @@ import Seo from "@/components/fundations/head/Seo.astro";
 import Meta from "@/components/fundations/head/Meta.astro";
 import Fonts from "@/components/fundations/head/Fonts.astro";
 import Favicons from "@/components/fundations/head/Favicons.astro";
-
 ---
 
 <Seo />
 <Meta />
 <Fonts />
 <Favicons />
+<script is:inline>
+  (() => {
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const apply = () => {
+      const choice = localStorage.getItem("theme") ?? "system";
+      const dark = choice === "dark" || (choice === "system" && media.matches);
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+      document.documentElement.dataset.themeChoice = choice;
+    };
+    window.applyTheme = apply;
+    media.addEventListener("change", apply);
+    apply();
+  })();
+</script>

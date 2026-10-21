@@ -14,12 +14,15 @@
   --color-muted-foreground: oklch(0.439 0 0);
 }
 
-/* The theme follows the system colour scheme. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: oklch(0.145 0 0);
-    --color-foreground: oklch(0.985 0 0);
-    --color-muted: oklch(0.269 0 0);
-    --color-muted-foreground: oklch(0.87 0 0);
-  }
+:root {
+  color-scheme: light;
+}
+
+/* Set by the theme script in BaseHead: light, dark or the system scheme. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-background: oklch(0.145 0 0);
+  --color-foreground: oklch(0.985 0 0);
+  --color-muted: oklch(0.269 0 0);
+  --color-muted-foreground: oklch(0.87 0 0);
 }

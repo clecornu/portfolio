@@ -8,12 +8,17 @@ const links = [
   { href: "#_", text: "Arena" },
   { href: "#_", text: "GitHub" },
 ];
+const themes = [
+  { value: "light", text: "Light" },
+  { value: "dark", text: "Dark" },
+  { value: "system", text: "System" },
+];
 const year = new Date().getFullYear();
 ---
 
 <footer>
   <Wrapper variant="standard" class="py-2">
-    <div class="grid grid-cols-2 lg:grid-cols-4 items-start">
+    <div class="grid grid-cols-2 gap-y-4 lg:grid-cols-4 items-start">
       <div
         class="flex items-center gap-2 text-muted-foreground text-xs"
       >
@@ -32,6 +37,36 @@ const year = new Date().getFullYear();
           ))
         }
       </div>
+      <div class="flex gap-4 items-center col-span-2 lg:col-span-1 lg:col-start-4 lg:justify-self-end">
+        {
+          themes.map((theme) => (
+            <button
+              type="button"
+              data-theme-option={theme.value}
+              class="text-muted-foreground text-xs hover:text-foreground aria-pressed:text-foreground transition-colors"
+            >
+              {theme.text}
+            </button>
+          ))
+        }
+      </div>
     </div>
   </Wrapper>
 </footer>
+<script>
+  const options = document.querySelectorAll<HTMLButtonElement>("[data-theme-option]");
+  const sync = () => {
+    const choice = document.documentElement.dataset.themeChoice;
+    options.forEach((option) => {
+      option.setAttribute("aria-pressed", String(option.dataset.themeOption === choice));
+    });
+  };
+  options.forEach((option) => {
+    option.addEventListener("click", () => {
+      localStorage.setItem("theme", option.dataset.themeOption!);
+      (window as unknown as { applyTheme: () => void }).applyTheme();
+      sync();
+    });
+  });
+  sync();
+</script>

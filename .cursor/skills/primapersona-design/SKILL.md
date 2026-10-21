@@ -70,8 +70,10 @@ palettes, no hex values in markup.
 - No tinted panels, no gradients, no colored section backgrounds - sections
   sit directly on the page background.
 
-**Dark mode is real** and driven by `prefers-color-scheme`: a media query in
-`global.css` swaps the four token values on `:root`. Never write `dark:`
+**Dark mode is real**: `:root[data-theme="dark"]` in `global.css` swaps the
+four token values. An inline script in `BaseHead` sets `data-theme` from the
+footer toggle (Light, Dark, System, saved in `localStorage`), following the
+system scheme by default. Never write `dark:`
 classes; change the token values instead.
 
 ## Layout and spacing
