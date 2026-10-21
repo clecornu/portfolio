@@ -23,8 +23,8 @@ indistinguishable from the existing sections.
 
 ## Typography
 
-Font is **Inter** only (`--font-sans: "Inter"` in `src/styles/global.css`,
-loaded from rsms.me via `fundations/head/Fonts.astro`). No serif, no mono,
+Font is **Switzer** only (`--font-sans: "Switzer"` in `src/styles/global.css`,
+loaded from Fontshare via `fundations/head/Fonts.astro`). No serif, no mono,
 no extra OpenType feature settings. Never introduce another font.
 
 Always use the `Text` component
