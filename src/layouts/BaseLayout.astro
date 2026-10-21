@@ -6,7 +6,7 @@ import Footer from "@/components/global/Footer.astro";
 import Navigation from "@/components/global/Navigation.astro";
 ---
 
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <BaseHead />
   </head>
@@ -14,5 +14,23 @@ import Navigation from "@/components/global/Navigation.astro";
     <Navigation />
     <main class="grow"><slot /></main>
     <Footer />
+    <script>
+      import Lenis from "lenis";
+      import "lenis/dist/lenis.css";
+
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const lenis = new Lenis({ autoRaf: true });
+        document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((link) => {
+          const target = link.getAttribute("href");
+          if (!target || target === "#_" || target === "#") return;
+          link.addEventListener("click", (event) => {
+            const el = document.querySelector(target);
+            if (!el) return;
+            event.preventDefault();
+            lenis.scrollTo(el as HTMLElement);
+          });
+        });
+      }
+    </script>
   </body>
 </html>
