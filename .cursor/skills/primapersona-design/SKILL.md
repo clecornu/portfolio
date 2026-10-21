@@ -33,19 +33,19 @@ ad-hoc sizes. Variants: `display6XL`-`displayXS` and `textXL`-`textXS`.
 The theme deliberately uses the *low* end of that scale:
 
 - Hero title: `tag="h1" variant="displayLG"` +
-  `font-medium leading-snug`, colored
+  `font-medium leading-snug tracking-tight`, colored
   `text-foreground`, placed with `lg:col-span-2 lg:col-start-3`
   (the grid, not `max-w-*`, controls line length).
 - Section heading: `tag="h2" variant="textXL"` +
-  `font-medium leading-snug lg:col-span-2`.
+  `font-medium leading-snug tracking-tight lg:col-span-2`.
 - Row title: `tag="h3" variant="displaySM"` (Work/Projects) or `textLG`
-  (Education/Speaking) + `font-medium leading-tight`.
+  (Education/Speaking) + `font-medium leading-tight tracking-tight`.
 - Body / descriptions: `variant="textSM"` in
   `text-muted-foreground`.
 - Meta labels (years, categories): `variant="textXS"` + `uppercase`.
 - Nav and footer links are raw anchors at `text-xs`.
 
-Headings are `font-medium` with default tracking and `text-pretty`;
+Headings are `font-medium` with `tracking-tight` and `text-pretty`;
 large paragraphs get `text-pretty` too. Small text never gets tight
 tracking or `text-pretty`. No `font-bold`, no `max-w-*` clamps on headings -
 the 4-column grid does the measuring.
