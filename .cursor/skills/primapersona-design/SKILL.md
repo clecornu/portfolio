@@ -43,11 +43,12 @@ The theme deliberately uses the *low* end of that scale:
 - Body / descriptions: `variant="textSM"` in
   `text-muted-foreground`.
 - Meta labels (years, categories): `variant="textXS"` + `uppercase`.
-- Nav and footer links are raw anchors at `text-xs tracking-tight`.
+- Nav and footer links are raw anchors at `text-xs`.
 
-Headings are `font-semibold` with `tracking-tighter`; small text uses
-`tracking-tight`. No `font-bold`, no `text-balance`, no `max-w-*` clamps on
-headings - the 4-column grid does the measuring.
+Headings are `font-semibold` with `tracking-tighter` and `text-pretty`;
+large paragraphs get `text-pretty` too. Small text never gets tight
+tracking or `text-pretty`. No `font-bold`, no `max-w-*` clamps on headings -
+the 4-column grid does the measuring.
 
 ## Color system
 
@@ -78,7 +79,7 @@ classes; change the token values instead.
 - Every section is `<section class="scroll-mt-32" id="...">` (the ids feed
   the fixed nav's anchor links) wrapping a `Wrapper`
   (`@/components/fundations/containers/Wrapper.astro`). Only one variant is
-  implemented: `standard` = `max-w-screen 2xl:max-w-[90rem] mx-auto px-8`.
+  implemented: `standard` = `max-w-340 2xl:max-w-380 mx-auto px-4 lg:px-8`.
   Don't hand-roll `max-w-* mx-auto` containers.
 - Section vertical padding goes on the Wrapper: `py-12 lg:py-24`. The hero
   uses `pb-8 pt-40 lg:pt-80` because the nav is fixed; nav and footer use
@@ -112,12 +113,12 @@ Reuse these before writing anything new:
   is baked in; never add other radius classes. The component is block-level
   `flex` and stretches to its container, so standalone buttons need `w-fit`
   or a flex parent. **Note:** the landing page itself uses no Buttons at
-  all - real CTAs are plain `text-xs tracking-tight` anchors or an sr-only
+  all - real CTAs are plain `text-xs` anchors or an sr-only
   link wrapping an `ArrowRight` icon (see `Speaking.astro`). Match that
   restraint; Buttons live mainly in the `/system` showcase pages.
 - **Wrapper**: the only page-width container (see Layout).
 - **Logo** (`assets/Logo.astro`): a plain text span (`alessandro.p`), styled
-  by the caller at `text-xs tracking-tight`.
+  by the caller at `text-xs`.
 - Icons live in `fundations/icons/` as individual Astro components (only
   `ArrowRight` and `Plus` exist); add new ones there in the same stroke
   style rather than importing icon packs. Icon links pair a
@@ -135,11 +136,12 @@ Reuse these before writing anything new:
 
 ## Voice and copy
 
-Copy is terse, declarative, and systems-minded: fragments over sentences
-("Code. Design. Strategy. Digital products with intent."), constraint
-vocabulary ("trade-offs", "failure modes", "under real-world pressure").
-Section eyebrow labels are short two-liners ("Featured Work / 2026 - Now").
-Meta labels are Title Case in source and uppercased by CSS. No exclamation
+Copy is plain, first person and systems-minded ("I design and build digital
+products, from the first sketch to the shipped code."), with constraint
+vocabulary ("trade-offs", "failure modes"). Headings and titles are in
+sentence case; project names keep their capitals. Section labels are short
+two-liners ("Selected work / 2024 to now"). Meta labels are sentence case in
+source and uppercased by CSS. No em dashes. No exclamation
 marks, no emoji, no marketing superlatives.
 
 ## Do / Don't
@@ -171,4 +173,4 @@ Don't:
 2. Layout holds on the 4-column grid and collapses to one column below `lg`.
 3. Every color comes from a token; check both schemes.
 4. Headings use `Text` variants; any buttons use `Button` variants.
-5. No new dependencies, no unused imports, minimal diff.
+5. No unused dependencies or imports, minimal diff.

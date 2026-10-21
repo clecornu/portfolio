@@ -11,7 +11,7 @@
 - **Get the bundle:** https://lexingtonthemes.com  
 
 ## Requirements
-- Node.js 18 or 20 (LTS recommended)
+- Node.js 22.12 or newer (required by Astro 7)
 - npm
 
 ## Commands
@@ -23,6 +23,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm install`          | Install dependencies                             |
 | `npm run dev`          | Start local dev server                           |
 | `npm run build`        | Build production site to `./dist/`               |
-| `npm run preview`     | Preview the production build locally             |
+| `npm run preview`      | Preview the production build locally             |
 | `npm run astro ...`    | Run Astro CLI commands                           |
 | `npm run astro --help` | Get help using the Astro CLI                     |

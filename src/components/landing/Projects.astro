@@ -9,31 +9,31 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 const featuredProjects = [
   {
-    year: "2026",
+    year: "2025",
     title: "Domestic Grid",
     description:
-      "A modular home systems platform mapping energy, climate, and space constraints into actionable layouts, automation rules, and long-term upgrade paths.",
-    category: "Residential Systems Design",
+      "A home systems planner that turns energy, climate and space into layouts, automation rules and a clear path for upgrades.",
+    category: "Residential systems",
     image: one,
     imageAlt:
       "Modern home interior with overlaid system diagrams for energy, climate, and spatial planning.",
   },
   {
-    year: "2026",
+    year: "2024",
     title: "Type Pressure",
     description:
-      "A typography study exploring rhythm, hierarchy, and legibility under extreme scale, density, and motion constraints across digital interfaces.",
-    category: "Typography Experiments",
+      "A study of rhythm, hierarchy and legibility when type is pushed to extreme size, density and motion on screen.",
+    category: "Typography experiments",
     image: two,
     imageAlt:
       "High-contrast typographic compositions testing scale, spacing, and motion.",
   },
   {
-    year: "2026",
+    year: "2023",
     title: "Haul State",
     description:
-      "A design and systems exploration of electric truck interfaces, focusing on load awareness, range management, and driver decision-making under real-world constraints.",
-    category: "Transportation Systems",
+      "Interface concepts for electric trucks: load awareness, range planning and the calls a driver makes on a long haul.",
+    category: "Transport systems",
     image: three,
     imageAlt:
       "Electric truck cockpit interface showing load metrics, range estimates, and system status.",
@@ -46,15 +46,15 @@ const featuredProjects = [
     <div class="grid grid-cols-1 lg:grid-cols-4 items-start">
       <div class="lg:col-start-2">
         <Text tag="p" variant="textSM" class="text-muted-foreground"
-          >Featured Projects
+          >Side projects
           <br />
-          2026 - Now</Text
+          2023 to now</Text
         >
       </div>
       <Text
         tag="h2"
         variant="textXL"
-        class="font-semibold leading-snug text-left tracking-tighter lg:col-span-2 text-foreground"
+        class="font-semibold leading-snug tracking-tighter lg:col-span-2 text-foreground text-pretty"
       >
         Projects
       </Text>
@@ -75,7 +75,7 @@ const featuredProjects = [
               <Text
                 tag="h3"
                 variant="displaySM"
-                class="text-foreground leading-tight font-semibold "
+                class="text-foreground leading-tight font-semibold text-pretty"
               >
                 {project.title}
               </Text>

@@ -1,5 +1,5 @@
 ---
-// Foundations
+// Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Icons
@@ -7,53 +7,38 @@ import ArrowRight from "@/components/fundations/icons/ArrowRight.astro";
 const speechesAndTalks = [
   {
     period: "2026",
-    title: "Interface Truths Under Constraint",
+    title: "Interface truths under constraint",
     description:
-      "A talk on designing UI when performance, latency, and imperfect data are the default—how to make trade-offs explicit and still ship clarity.",
-    category: {
-      label: "Product Design",
-      href: "#_",
-    },
+      "Designing UI when latency and imperfect data are the default, and still shipping something clear.",
+    category: { label: "Product design", href: "#_" },
   },
   {
     period: "2026",
-    title: "Typography as Infrastructure",
+    title: "Typography as infrastructure",
     description:
-      "Why type systems aren’t decoration: rhythm, hierarchy, and density as tools for cognition, speed, and decision-making in complex interfaces.",
-    category: {
-      label: "Typography",
-      href: "#_",
-    },
-  },
-  {
-    period: "2026",
-    title: "State Machines for Humans",
-    description:
-      "Practical approaches to modeling UI states, edge cases, and failure modes so products behave predictably under real-world pressure.",
-    category: {
-      label: "Engineering Systems",
-      href: "#_",
-    },
+      "Why type is not decoration: rhythm, hierarchy and density as tools for reading fast in complex interfaces.",
+    category: { label: "Typography", href: "#_" },
   },
   {
     period: "2025",
-    title: "Speed is a Feature",
+    title: "State machines for humans",
     description:
-      "Perceived performance tactics: skeletons, progressive disclosure, optimistic UI, and knowing when faking speed destroys trust.",
-    category: {
-      label: "Performance UX",
-      href: "#_",
-    },
+      "Modelling UI states, edge cases and failures so products behave predictably under real pressure.",
+    category: { label: "Engineering", href: "#_" },
+  },
+  {
+    period: "2025",
+    title: "Speed is a feature",
+    description:
+      "Skeletons, progressive disclosure and optimistic UI, and knowing when faking speed costs trust.",
+    category: { label: "Performance", href: "#_" },
   },
   {
     period: "2024",
-    title: "Design Critique Without Mercy",
+    title: "Design critique without mercy",
     description:
-      "A framework for critique that produces better work by isolating constraints, naming decisions, and killing ambiguity fast.",
-    category: {
-      label: "Practice",
-      href: "#_",
-    },
+      "A way to critique that makes the work better: name the constraints, name the decisions, cut the ambiguity.",
+    category: { label: "Practice", href: "#_" },
   },
 ];
 ---
@@ -63,17 +48,17 @@ const speechesAndTalks = [
     <div class="grid grid-cols-1 lg:grid-cols-4 items-start">
       <div class="lg:col-start-2">
         <Text tag="p" variant="textSM" class="text-muted-foreground">
-          Speeches & Talks
+          Talks
           <br />
-          Selected Sessions
+          Selected sessions
         </Text>
       </div>
       <Text
         tag="h2"
         variant="textXL"
-        class="font-semibold leading-snug tracking-tighter lg:col-span-2 text-foreground"
+        class="font-semibold leading-snug tracking-tighter lg:col-span-2 text-foreground text-pretty"
       >
-        Speeches & Talks
+        Speaking
       </Text>
     </div>
     <div class="flex flex-col gap-12 mt-12">
@@ -87,13 +72,15 @@ const speechesAndTalks = [
                 variant="textXS"
                 class="text-muted-foreground uppercase"
               >
-                {item.period} — {item.category.label}
+                {item.period}
+                <br />
+                {item.category.label}
               </Text>
               {/* Title */}
               <Text
                 tag="h3"
                 variant="textLG"
-                class="text-foreground leading-tight font-semibold"
+                class="text-foreground leading-tight font-semibold text-pretty"
               >
                 {item.title}
               </Text>

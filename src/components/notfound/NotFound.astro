@@ -1,0 +1,30 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Icons
+import ArrowRight from "@/components/fundations/icons/ArrowRight.astro";
+---
+
+<section>
+  <Wrapper variant="standard" class="pb-8 pt-40 lg:pt-80">
+    <div class="grid grid-cols-1 lg:grid-cols-4 items-start">
+      <div class="lg:col-span-2 lg:col-start-3">
+        <Text
+          tag="h1"
+          variant="displayLG"
+          class="font-semibold leading-snug tracking-tighter text-foreground text-pretty"
+        >
+          This page is not here. It may have moved, or it never existed.
+        </Text>
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 mt-8 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Back to the work
+          <ArrowRight class="size-4" />
+        </a>
+      </div>
+    </div>
+  </Wrapper>
+</section>

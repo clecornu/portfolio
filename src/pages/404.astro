@@ -1,23 +1,10 @@
 ---
-// Fundation
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Text from "@/components/fundations/elements/Text.astro";
-import Button from "@/components/fundations/elements/Button.astro";
-import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Sections
+import NotFound from "@/components/notfound/NotFound.astro";
 ---
 
 <BaseLayout>
-  <section>
-    <Wrapper variant="standard" class="pb-8 pt-40 lg:pt-80">
-      <div class="grid grid-cols-1 lg:grid-cols-4 items-end gap-y-8">
-        <Text
-          tag="h1"
-          variant="displayLG"
-          class="font-semibold leading-snug text-left tracking-tighter lg:col-span-2 text-foreground lg:col-start-3"
-        >
-          404 - Page Not Found
-        </Text>
-      </div>
-    </Wrapper>
-  </section>
+  <NotFound />
 </BaseLayout>

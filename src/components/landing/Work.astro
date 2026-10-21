@@ -10,31 +10,30 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 const featuredProjects = [
   {
     year: "2026",
-    title: "BRoom",
+    title: "Tuisku",
     description:
-      "An electric vehicle platform built around modular hardware, real-time telemetry, and software-defined systems for efficiency, autonomy, and long-term scalability.",
-    category: "Electric Vehicle Platform",
+      "An electric vehicle platform built on modular hardware, live telemetry and software defined systems, designed to stay efficient as the fleet grows.",
+    category: "Electric vehicles",
     image: one,
     imageAlt:
       "Electric car in motion against a minimal background, highlighting a digital cockpit and aerodynamic design.",
   },
-
   {
-    year: "2026",
-    title: "Aurora Ride",
+    year: "2025",
+    title: "Kulku",
     description:
-      "An electric mobility subscription focused on real-time diagnostics, predictive maintenance, and low-friction commuter flows.",
-    category: "Product Systems",
+      "A subscription for electric bikes with live diagnostics, maintenance that books itself and a commute that starts in two taps.",
+    category: "Product systems",
     image: two,
     imageAlt:
       "Modern electric bicycle positioned against a minimal, light-colored wall.",
   },
   {
-    year: "2026",
-    title: "Northwind",
+    year: "2024",
+    title: "Halla",
     description:
-      "An electric device platform built around efficient power management, embedded firmware, and production-ready industrial design for reliable, scalable deployment.",
-    category: "Hardware & Embedded Systems",
+      "A compact electric device with careful power management, embedded firmware and industrial design ready for production.",
+    category: "Hardware and embedded systems",
     image: three,
     imageAlt:
       "Minimal electric device on a clean surface, showing precision controls, status indicators, and compact industrial design.",
@@ -47,15 +46,15 @@ const featuredProjects = [
     <div class="grid grid-cols-1 lg:grid-cols-4 items-start">
       <div class="lg:col-start-2">
         <Text tag="p" variant="textSM" class="text-muted-foreground"
-          >Featured Work
+          >Selected work
           <br />
-          2026 - Now</Text
+          2024 to now</Text
         >
       </div>
       <Text
         tag="h2"
         variant="textXL"
-        class="font-semibold leading-snug text-left tracking-tighter lg:col-span-2 text-foreground"
+        class="font-semibold leading-snug tracking-tighter lg:col-span-2 text-foreground text-pretty"
       >
         Work
       </Text>
@@ -76,7 +75,7 @@ const featuredProjects = [
               <Text
                 tag="h3"
                 variant="displaySM"
-                class="text-foreground leading-tight font-semibold "
+                class="text-foreground leading-tight font-semibold text-pretty"
               >
                 {project.title}
               </Text>

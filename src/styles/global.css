@@ -1,10 +1,12 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
-@plugin "tailwind-scrollbar-hide";
 
 @theme {
   /* Typography */
   --font-sans: "Inter", sans-serif;
+  --text-10xl: 10rem;
+  --text-10xl--line-height: 1;
+  --text-12xl: 12rem;
+  --text-12xl--line-height: 1;
   /* Colors */
   --color-background: oklch(1 0 0);
   --color-foreground: oklch(0.205 0 0);

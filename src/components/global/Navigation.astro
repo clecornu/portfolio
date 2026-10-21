@@ -3,7 +3,6 @@
 import Logo from "@/components/assets/Logo.astro";
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
-import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 
 const links = [
@@ -11,7 +10,7 @@ const links = [
   { href: "#projects", text: "Projects" },
   { href: "#education", text: "Education" },
   { href: "#speaking", text: "Speaking" },
-  { href: "/system/overview", text: "Components" },
+  { href: "/system/overview", text: "Overview" },
 ];
 ---
 
@@ -20,22 +19,22 @@ const links = [
     <div class="grid grid-cols-3 lg:grid-cols-4 items-start">
       <a href="/" class="-mt-1 flex">
         <Logo
-          class="text-muted-foreground text-xs tracking-tight"
+          class="text-muted-foreground text-xs"
         />
       </a>
       <Text
         tag="p"
         variant="textXS"
-        class="text-muted-foreground tracking-tight"
+        class="text-muted-foreground"
       >
-        Helsinki, Finland<br />Creative Technologist
+        Helsinki, Finland<br />Creative technologist
       </Text>
       <div class="hidden lg:flex gap-8 text-sm items-center">
         {
           links.map((link) => (
             <a
               href={link.href}
-              class="text-muted-foreground  tracking-tight text-xs"
+              class="text-muted-foreground text-xs"
             >
               {link.text}
             </a>
@@ -43,7 +42,7 @@ const links = [
         }
       </div>
       <a href="https://lexingtonthemes.com/templates/primapersona"
-        class="text-muted-foreground text-xs tracking-tight ml-auto"
+        class="text-muted-foreground text-xs ml-auto"
         >Download
       </a>
     </div>

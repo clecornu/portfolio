@@ -1,64 +1,50 @@
 ---
-// Foundations
+// Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 
 const education = [
   {
     period: "Ongoing",
-    title: "Self-Directed Study",
+    title: "Self directed study",
     description:
-      "Independent, long-form study driven by primary sources, reverse engineering, and applied experimentation rather than course completion.",
+      "Long form study driven by primary sources, reverse engineering and experiments, rather than finished courses.",
     category: "Autodidactic",
   },
   {
-    period: "Advanced Focus",
-    title: "Design & Visual Systems",
+    period: "Advanced",
+    title: "Design and visual systems",
     description:
-      "Training in typography, layout, proportion, and hierarchy with emphasis on constraint-based decision-making and visual clarity under pressure.",
-    category: "Design Education",
+      "Typography, layout, proportion and hierarchy, with a focus on clear decisions made under constraint.",
+    category: "Design",
   },
   {
     period: "Foundational",
-    title: "Frontend Engineering",
+    title: "Frontend engineering",
     description:
-      "Practical study of modern frontend systems including component architectures, state management, performance constraints, and accessibility.",
-    category: "Software Engineering",
+      "Component architecture, state, performance and accessibility in modern frontend systems.",
+    category: "Software engineering",
   },
   {
-    period: "Applied Theory",
-    title: "Systems Thinking",
+    period: "Applied",
+    title: "Systems thinking",
     description:
-      "Study of complex systems, feedback loops, second-order effects, and failure modes across technical and organizational domains.",
-    category: "Systems Theory",
+      "Feedback loops, second order effects and failure modes across technical and organisational systems.",
+    category: "Systems theory",
   },
   {
-    period: "Continuous Practice",
-    title: "Typography & Reading Discipline",
+    period: "Daily",
+    title: "Typography and reading",
     description:
-      "Ongoing typographic analysis through reproduction, teardown of historical work, and high-frequency iteration to sharpen visual judgment.",
-    category: "Visual Literacy",
-  },
-  {
-    period: "Cross-Disciplinary",
-    title: "Product & Decision Making",
-    description:
-      "Study of trade-offs, prioritization, and decision frameworks informed by real-world constraints rather than idealized process models.",
-    category: "Product Thinking",
-  },
-  {
-    period: "Technical Literacy",
-    title: "Computational Foundations",
-    description:
-      "Understanding of algorithms, data structures, and computational limits sufficient to reason about performance, scale, and system behavior.",
-    category: "Computer Science",
+      "Reproducing and taking apart historical work to sharpen the eye, one iteration at a time.",
+    category: "Craft",
   },
   {
     period: "Ongoing",
-    title: "Critical Reading & Writing",
+    title: "Critical reading and writing",
     description:
-      "Structured reading and synthesis across design, technology, philosophy, and economics to build durable mental models and language precision.",
-    category: "Intellectual Formation",
+      "Reading across design, technology, philosophy and economics, and writing it down to think more precisely.",
+    category: "Writing",
   },
 ];
 ---
@@ -68,16 +54,16 @@ const education = [
     <div class="grid grid-cols-1 lg:grid-cols-4 items-start">
       <div class="lg:col-start-2">
         <Text tag="p" variant="textSM" class="text-muted-foreground">
-          Education & Formation
+          Learning
           <br />
-          Ongoing
+          Always ongoing
         </Text>
       </div>
 
       <Text
         tag="h2"
         variant="textXL"
-        class="font-semibold leading-snug tracking-tighter lg:col-span-2 text-foreground"
+        class="font-semibold leading-snug tracking-tighter lg:col-span-2 text-foreground text-pretty"
       >
         Education
       </Text>
@@ -99,7 +85,7 @@ const education = [
               <Text
                 tag="h3"
                 variant="textLG"
-                class="text-foreground leading-tight font-semibold"
+                class="text-foreground leading-tight font-semibold text-pretty"
               >
                 {item.title}
               </Text>

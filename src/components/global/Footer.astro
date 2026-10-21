@@ -1,9 +1,7 @@
 ---
 // Assets
 import Logo from "@/components/assets/Logo.astro";
-// Foundations
-import Text from "@/components/fundations/elements/Text.astro";
-import Button from "@/components/fundations/elements/Button.astro";
+// Fundations
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 const links = [
   { href: "#_", text: "LinkedIn" },
@@ -17,7 +15,7 @@ const year = new Date().getFullYear();
   <Wrapper variant="standard" class="py-2">
     <div class="grid grid-cols-2 lg:grid-cols-4 items-start">
       <div
-        class="flex items-center gap-2 text-muted-foreground text-xs tracking-tight"
+        class="flex items-center gap-2 text-muted-foreground text-xs"
       >
         {year}
         <Logo />
@@ -27,7 +25,7 @@ const year = new Date().getFullYear();
           links.map((link) => (
             <a
               href={link.href}
-              class="text-muted-foreground tracking-tight  text-xs hover:text-foreground transition-colors"
+              class="text-muted-foreground text-xs hover:text-foreground transition-colors"
             >
               {link.text}
             </a>
