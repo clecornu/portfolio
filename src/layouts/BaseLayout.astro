@@ -20,6 +20,18 @@ import Navigation from "@/components/global/Navigation.astro";
 
       if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         const lenis = new Lenis({ autoRaf: true });
+        const parallax = document.querySelectorAll<HTMLElement>("[data-parallax]");
+        const updateParallax = () => {
+          const viewport = window.innerHeight;
+          parallax.forEach((image) => {
+            const frame = image.parentElement!.getBoundingClientRect();
+            if (frame.bottom < 0 || frame.top > viewport) return;
+            const progress = (frame.top + frame.height / 2 - viewport / 2) / viewport;
+            image.style.transform = `translate3d(0, ${progress * -12}%, 0) scale(1.15)`;
+          });
+        };
+        lenis.on("scroll", updateParallax);
+        updateParallax();
         document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((link) => {
           const target = link.getAttribute("href");
           if (!target || target === "#_" || target === "#") return;

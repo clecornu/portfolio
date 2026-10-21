@@ -94,15 +94,18 @@ const featuredProjects = [
                 {project.category}
               </Text>
             </div>
-            <Image
-              width={1200}
-              height={630}
-              src={project.image}
-              alt={project.imageAlt}
-              loading="lazy"
-              decoding="async"
-              class="size-full aspect-4/2 rounded-4xl mt-12 object-cover object-center"
-            />
+            <div class="aspect-4/2 rounded-4xl mt-12 overflow-hidden">
+              <Image
+                width={1200}
+                height={630}
+                src={project.image}
+                alt={project.imageAlt}
+                loading="lazy"
+                decoding="async"
+                data-parallax
+                class="size-full object-cover object-center scale-115 will-change-transform"
+              />
+            </div>
           </article>
         ))
       }
