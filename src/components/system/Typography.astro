@@ -16,7 +16,7 @@ const styles = [
   { name: "Display SM", variant: "displaySM", use: "Work and project titles", display: true },
   { name: "Display XS", variant: "displayXS", display: true },
   { name: "Text XL", variant: "textXL", use: "Section headings", display: true },
-  { name: "Text LG", variant: "textLG", use: "Education and talk titles", display: false, semibold: true },
+  { name: "Text LG", variant: "textLG", use: "Education and talk titles", display: false, medium: true },
   { name: "Text Base", variant: "textBase", display: false },
   { name: "Text SM", variant: "textSM", use: "Descriptions and section labels", display: false },
   { name: "Text XS", variant: "textXS", use: "Years, categories, the navigation and the footer", display: false },
@@ -32,7 +32,7 @@ const styles = [
             <Text
               tag="p"
               variant={style.variant}
-              class:list={["truncate text-foreground", style.display && "font-semibold leading-snug tracking-tighter", style.semibold && "font-semibold leading-tight"]}
+              class:list={["truncate text-foreground", style.display && "font-medium leading-snug", style.medium && "font-medium leading-tight"]}
             >
               Creative technologist, Helsinki
             </Text>
