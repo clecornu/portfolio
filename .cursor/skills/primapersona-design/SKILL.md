@@ -127,7 +127,7 @@ Reuse these before writing anything new:
 
 - Radius is binary: **`rounded-4xl` on large images** (2 uses) and the
   Button's built-in `rounded-full` - nothing in between (the `/system`
-  color swatches are square). Never round cards, sections, or
+  color swatches use `rounded-xl`). Never round cards, sections, or
   text blocks; there are no cards.
 - Borders are 1px `border-t` hairlines in `border-muted`, used
   as row separators - not boxes or rings around content.
