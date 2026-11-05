@@ -22,18 +22,18 @@ import NeuralNetwork from "@/components/landing/visuals/NeuralNetwork.astro";
 
     <div class="flex flex-col gap-12 mt-8">
       <Entry
-        year="2025"
         title="Intent classifier"
         description="DistilBERT fine tuned model for intent classification specific to pool-service messages."
         category="PyTorch, Hugging Face"
+        link={{ href: "https://github.com/clecornu/IntentClassifier", label: "GitHub" }}
       >
         <IntentRouter />
       </Entry>
       <Entry
-        year="2025"
         title="Neural networks from scratch"
         description="About two years ago, I got really into ML. I built a vanilla NN, and a CNN trained on MNIST, an RNN, and a transformer encoder layer with multi head attention. All built using only Numpy, so I could understand the real math behind them."
         category="NumPy, Pandas"
+        link={{ href: "https://github.com/clecornu/deep_learning", label: "GitHub" }}
       >
         <NeuralNetwork />
       </Entry>

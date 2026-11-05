@@ -9,14 +9,16 @@ import five from "@/images/soccer/soccer-5.webp";
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import ArrowLeft from "@/components/fundations/icons/ArrowLeft.astro";
+import ArrowRight from "@/components/fundations/icons/ArrowRight.astro";
 
-// Heights follow the Figma gallery; widths come from each photo's ratio.
 const photos = [
-  { src: one, height: 342, alt: "Carson in a training kit, standing in a stadium corridor." },
-  { src: two, height: 392, alt: "Carson and his dad after a match, a cut above Carson’s eye." },
-  { src: three, height: 383, alt: "Close up of a St. Louis City SC training top." },
-  { src: four, height: 430, alt: "Carson striking a ball on a pitch in front of red tiled houses." },
-  { src: five, height: 365, alt: "Carson on the field during an MLS NEXT match." },
+  { src: one, alt: "Carson in a training kit, standing in a stadium corridor." },
+  { src: two, alt: "Carson and his dad after a match, a cut above Carson’s eye." },
+  { src: three, alt: "Close up of a St. Louis City SC training top." },
+  { src: four, alt: "Carson striking a ball on a pitch in front of red tiled houses." },
+  { src: five, alt: "Carson on the field during an MLS NEXT match." },
 ];
 
 const story = [
@@ -29,29 +31,46 @@ const story = [
 
 <section class="scroll-mt-32" id="soccer">
   <Wrapper variant="standard" class="py-12 lg:py-24">
-    <Text
-      tag="h2"
-      variant="displaySM"
-      class="text-foreground leading-tight font-medium tracking-tight text-pretty"
-    >
-      Soccer
-    </Text>
+    <div class="flex items-end justify-between gap-4">
+      <Text
+        tag="h2"
+        variant="displaySM"
+        class="text-foreground leading-tight font-medium tracking-tight text-pretty"
+      >
+        Soccer
+      </Text>
+      <div class="flex gap-2">
+        <Button variant="muted" size="sm" iconOnly aria-label="Previous photo" class="disabled:opacity-40 disabled:pointer-events-none" data-carousel-prev>
+          <ArrowLeft slot="icon" class="size-4" />
+        </Button>
+        <Button variant="muted" size="sm" iconOnly aria-label="Next photo" class="disabled:opacity-40 disabled:pointer-events-none" data-carousel-next>
+          <ArrowRight slot="icon" class="size-4" />
+        </Button>
+      </div>
+    </div>
 
-    <div class="-mx-4 mt-12 flex items-start gap-6 overflow-x-auto px-4 [--photo-scale:0.7] [scrollbar-width:thin] lg:-mx-8 lg:gap-12 lg:px-8 lg:[--photo-scale:1]">
-      {
-        photos.map((photo) => (
-          <Image
-            src={photo.src}
-            alt={photo.alt}
-            width={photo.src.width}
-            height={photo.src.height}
-            loading="lazy"
-            decoding="async"
-            class="w-auto shrink-0 rounded-[20px] object-cover"
-            style={`height: calc(var(--photo-scale) * ${photo.height}px)`}
-          />
-        ))
-      }
+    <div class="mt-12" role="region" aria-roledescription="carousel" aria-label="Soccer photos" data-carousel>
+      <ul
+        class="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto overscroll-x-contain px-4 [scrollbar-width:none] lg:-mx-8 lg:scroll-px-8 lg:gap-6 lg:px-8 [&::-webkit-scrollbar]:hidden"
+        data-carousel-track
+      >
+        {
+          photos.map((photo, i) => (
+            <li class="shrink-0 snap-start" aria-roledescription="slide" aria-label={`${i + 1} of ${photos.length}`}>
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.src.width}
+                height={photo.src.height}
+                loading="lazy"
+                decoding="async"
+                draggable="false"
+                class="h-80 w-auto rounded-[20px] object-cover lg:h-98"
+              />
+            </li>
+          ))
+        }
+      </ul>
     </div>
 
     <div class="mt-12 flex flex-col gap-5">
@@ -59,3 +78,35 @@ const story = [
     </div>
   </Wrapper>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((carousel) => {
+    const section = carousel.closest("section")!;
+    const track = carousel.querySelector<HTMLElement>("[data-carousel-track]")!;
+    const prev = section.querySelector<HTMLButtonElement>("[data-carousel-prev]")!;
+    const next = section.querySelector<HTMLButtonElement>("[data-carousel-next]")!;
+    const slides = [...track.children] as HTMLElement[];
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const inset = () => parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0;
+    const offset = (slide: HTMLElement) => slide.offsetLeft - track.offsetLeft - inset();
+
+    const go = (direction: 1 | -1) => {
+      const x = track.scrollLeft;
+      const target =
+        direction === 1
+          ? slides.find((slide) => offset(slide) > x + 4)
+          : [...slides].reverse().find((slide) => offset(slide) < x - 4);
+      track.scrollTo({ left: target ? offset(target) : direction === 1 ? track.scrollWidth : 0, behavior: reduce.matches ? "auto" : "smooth" });
+    };
+    const sync = () => {
+      prev.disabled = track.scrollLeft <= 4;
+      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+    };
+
+    prev.addEventListener("click", () => go(-1));
+    next.addEventListener("click", () => go(1));
+    track.addEventListener("scroll", sync, { passive: true });
+    new ResizeObserver(sync).observe(track);
+    sync();
+  });
+</script>

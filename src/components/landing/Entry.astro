@@ -1,39 +1,53 @@
 ---
-// One row of a section list: year, title, description, category, then media.
+// One row of a section list: title, description, category and link, then media.
 // The media slot closes the row, so there is no bottom padding.
 import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import ArrowUpRight from "@/components/fundations/icons/ArrowUpRight.astro";
 
 interface Props {
-  year: string;
   title: string;
   description: string;
   category: string;
+  link?: { href: string; label: string };
 }
-const { year, title, description, category } = Astro.props;
+const { title, description, category, link } = Astro.props;
 ---
 
 <article class="pt-12 border-t border-muted">
   <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start">
-    <Text tag="p" variant="textXS" class="text-muted-foreground uppercase">
-      {year}
-    </Text>
     <Text
       tag="h3"
       variant="displaySM"
-      class="text-foreground leading-tight font-medium tracking-tight text-pretty"
+      class="text-foreground leading-tight font-medium tracking-tight text-pretty lg:col-start-2"
     >
       {title}
     </Text>
     <Text tag="p" variant="textSM" class="text-muted-foreground">
       {description}
     </Text>
-    <Text
-      tag="p"
-      variant="textXS"
-      class="text-muted-foreground uppercase lg:ml-auto lg:col-start-4"
-    >
-      {category}
-    </Text>
+    <div class="flex flex-col gap-4 lg:items-end lg:col-start-4">
+      <Text tag="p" variant="textXS" class="text-muted-foreground uppercase">
+        {category}
+      </Text>
+      {
+        link && (
+          <Button
+            isLink
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="muted"
+            size="xs"
+            gap="xs"
+            class="w-fit"
+          >
+            {link.label}
+            <ArrowUpRight slot="right-icon" class="size-3.5" />
+          </Button>
+        )
+      }
+    </div>
   </div>
   <slot />
 </article>

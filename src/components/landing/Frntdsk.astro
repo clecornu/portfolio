@@ -4,7 +4,10 @@ import FrntdskMark from "@/components/assets/FrntdskMark.astro";
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import Play from "@/components/fundations/icons/Play.astro";
 import Entry from "@/components/landing/Entry.astro";
+
+const video = "M7eaDK2YS8s";
 ---
 
 <section class="scroll-mt-32" id="frntdsk">
@@ -26,26 +29,54 @@ import Entry from "@/components/landing/Entry.astro";
 
     <div class="flex flex-col gap-12 mt-8">
       <Entry
-        year="Since 2025"
         title="Frntdsk"
         description="An omnichannel agent orchestration platform. Starting with CX, my goal for the company is eventually to expand into customer success, sales, recruiting, procurement, operations, etc. I believe human communication is the bottleneck slowing down the time between idea and implementation in a business. I believe that by connecting communication, intelligence, and execution into one layer, we can dramatically reduce the amount of humans touching one problem in order to solve it."
         category="Founder"
+        link={{ href: "https://frntdsk.cx", label: "frntdsk.cx" }}
       >
-        <div class="relative mt-12 flex aspect-video flex-col justify-end overflow-hidden rounded-4xl bg-foreground p-6 lg:p-24">
-          <FrntdskMark
-            class="absolute left-[52.47%] top-[-18.66%] w-[77.16%] text-background"
-            strokeWidth={0.38}
-          />
-          <Text
-            tag="p"
-            variant="displayLG"
-            class="relative font-medium leading-snug tracking-tight"
+        <!-- Poster from the Figma thumbnail; the YouTube player loads on click. -->
+        <div class="relative mt-12 aspect-video overflow-hidden rounded-4xl bg-foreground" data-video={video}>
+          <a
+            href={`https://www.youtube.com/watch?v=${video}`}
+            class="group absolute inset-0 flex flex-col justify-between p-6 focus-visible:outline-none lg:p-24"
+            data-video-play
           >
-            <span class="block text-background">Procedure demo</span>
-            <span class="block text-background/60">Frntdsk for CX</span>
-          </Text>
+            <FrntdskMark
+              class="absolute left-[52.47%] top-[-18.66%] w-[77.16%] text-background"
+              strokeWidth={0.38}
+            />
+            <span class="relative flex size-12 items-center justify-center rounded-full bg-background text-foreground transition-transform duration-300 group-hover:scale-105 group-focus-visible:ring-2 group-focus-visible:ring-background group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-foreground lg:size-20">
+              <Play class="size-4 translate-x-px lg:size-6" />
+              <span class="sr-only">Play the Frntdsk procedure demo</span>
+            </span>
+            <Text
+              tag="span"
+              variant="displayLG"
+              class="relative font-medium leading-snug tracking-tight"
+            >
+              <span class="block text-background">Procedure demo</span>
+              <span class="block text-background/60">Frntdsk for CX</span>
+            </Text>
+          </a>
         </div>
       </Entry>
     </div>
   </Wrapper>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-video]").forEach((frame) => {
+    const play = frame.querySelector<HTMLAnchorElement>("[data-video-play]")!;
+    play.addEventListener("click", (event) => {
+      event.preventDefault();
+      const player = document.createElement("iframe");
+      player.src = `https://www.youtube-nocookie.com/embed/${frame.dataset.video}?autoplay=1&rel=0`;
+      player.title = "Frntdsk procedure demo";
+      player.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      player.allowFullscreen = true;
+      player.className = "absolute inset-0 size-full";
+      play.replaceWith(player);
+      player.focus();
+    });
+  });
+</script>
