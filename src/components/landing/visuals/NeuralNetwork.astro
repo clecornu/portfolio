@@ -1,0 +1,37 @@
+---
+import { buildNetwork } from "@/scripts/neural-network";
+
+const { edges, neurons } = buildNetwork();
+---
+
+<div class="mt-12 flex items-center justify-center overflow-hidden rounded-4xl bg-muted px-4 py-8 lg:h-98 lg:py-0">
+  <svg
+    viewBox="296 40 704 312"
+    class="h-auto w-full max-w-176 text-foreground"
+    role="img"
+    aria-label="A small neural network running one training step: signals flow forward through the layers, then gradients flow back and the weights update."
+    data-neural-network
+  >
+    <g fill="none" stroke="currentColor">
+      {edges.map((e) => <path d={e.d} stroke-opacity={e.base.toFixed(3)} stroke-width="1" vector-effect="non-scaling-stroke" data-edge-base />)}
+    </g>
+    <g fill="none" stroke="currentColor" stroke-width="1.25" style="opacity: 0" data-signal>
+      {edges.map((e) => <path d={e.d} pathLength="1" stroke-opacity={e.forward.toFixed(3)} stroke-dasharray="0 2" data-edge-forward />)}
+    </g>
+    <g fill="none" stroke="currentColor" stroke-width="2.25" style="opacity: 0" data-signal>
+      {edges.map((e) => <path d={e.d} pathLength="1" stroke-opacity={e.backward.toFixed(3)} stroke-dasharray="0 2" data-edge-backward />)}
+    </g>
+    <g fill="none" stroke="currentColor" stroke-width="1.25">
+      {neurons.map((n) => <circle cx={n.cx} cy={n.cy} r="5" style="opacity: 0" data-ring />)}
+    </g>
+    <g fill="currentColor">
+      {neurons.map((n) => <circle cx={n.cx} cy={n.cy} r="5" style={`opacity: ${n.activation.toFixed(3)}`} data-neuron />)}
+    </g>
+  </svg>
+</div>
+
+<script>
+  import { animateNetwork } from "@/scripts/neural-network";
+
+  document.querySelectorAll<SVGSVGElement>("[data-neural-network]").forEach(animateNetwork);
+</script>

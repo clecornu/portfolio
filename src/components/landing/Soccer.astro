@@ -1,0 +1,61 @@
+---
+// Assets
+import { Image } from "astro:assets";
+import one from "@/images/soccer/soccer-1.webp";
+import two from "@/images/soccer/soccer-2.webp";
+import three from "@/images/soccer/soccer-3.webp";
+import four from "@/images/soccer/soccer-4.webp";
+import five from "@/images/soccer/soccer-5.webp";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+
+// Heights follow the Figma gallery; widths come from each photo's ratio.
+const photos = [
+  { src: one, height: 342, alt: "Carson in a training kit, standing in a stadium corridor." },
+  { src: two, height: 392, alt: "Carson and his dad after a match, a cut above Carson’s eye." },
+  { src: three, height: 383, alt: "Close up of a St. Louis City SC training top." },
+  { src: four, height: 430, alt: "Carson striking a ball on a pitch in front of red tiled houses." },
+  { src: five, height: 365, alt: "Carson on the field during an MLS NEXT match." },
+];
+
+const story = [
+  "Soccer was my first obsession. From the time I was 5, all I wanted was to play professionally, and after training 3 hours a day for years, I eventually got scouted by both LA galaxy, and ST. Louis City, two MLS Academies. After playing well at both, neither offered me a spot.",
+  "The rejections broke me, I remember driving back from LA and not saying a word the entire time. I felt sorry for myself, questioning why this happened to me. Then, my dad asked me a question, did I want to sit and feel sorry for myself, or did I want to double down and work even harder, so when the next opportunity came, I was ready? I went out and trained right after.",
+  "I ended up traveling to Spain on my own, playing with Real Sporting de Gijón for a month, then coming back again later to play with a team in Valencia. Finally, last year, I got a few offers to play in college, including a Division 1 offer. However, another obsession had been creeping up, and that was my obsession with building. I decided to turn down the offer to focus full time on building.",
+  "Soccer has shaped me into who I am today, I’ve learned to love rejection, enjoy the process and the work that comes with it, and that when something has to happen, I make it happen. These lessons are a big part of why I want to be at the Academy. I do my best work around others that constantly push my limits, and the Academy is going to be full of the best, smartest, most hard working young founders. I need to be a part of it.",
+];
+---
+
+<section class="scroll-mt-32" id="soccer">
+  <Wrapper variant="standard" class="py-12 lg:py-24">
+    <Text
+      tag="h2"
+      variant="displaySM"
+      class="text-foreground leading-tight font-medium tracking-tight text-pretty"
+    >
+      Soccer
+    </Text>
+
+    <div class="-mx-4 mt-12 flex items-start gap-6 overflow-x-auto px-4 [--photo-scale:0.7] [scrollbar-width:thin] lg:-mx-8 lg:gap-12 lg:px-8 lg:[--photo-scale:1]">
+      {
+        photos.map((photo) => (
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            width={photo.src.width}
+            height={photo.src.height}
+            loading="lazy"
+            decoding="async"
+            class="w-auto shrink-0 rounded-[20px] object-cover"
+            style={`height: calc(var(--photo-scale) * ${photo.height}px)`}
+          />
+        ))
+      }
+    </div>
+
+    <div class="mt-12 flex flex-col gap-5">
+      {story.map((paragraph) => <Text tag="p" variant="textSM" class="text-foreground">{paragraph}</Text>)}
+    </div>
+  </Wrapper>
+</section>

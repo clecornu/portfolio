@@ -1,0 +1,51 @@
+---
+// Assets
+import FrntdskMark from "@/components/assets/FrntdskMark.astro";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import Entry from "@/components/landing/Entry.astro";
+---
+
+<section class="scroll-mt-32" id="frntdsk">
+  <Wrapper variant="standard" class="py-12 lg:py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-4 items-start">
+      <div class="lg:col-start-2">
+        <Text tag="p" variant="textSM" class="text-muted-foreground">
+          What I’m building
+        </Text>
+      </div>
+      <Text
+        tag="h2"
+        variant="textXL"
+        class="font-medium leading-snug tracking-tight lg:col-span-2 text-foreground text-pretty"
+      >
+        Frntdsk
+      </Text>
+    </div>
+
+    <div class="flex flex-col gap-12 mt-8">
+      <Entry
+        year="Since 2025"
+        title="Frntdsk"
+        description="An omnichannel agent orchestration platform. Starting with CX, my goal for the company is eventually to expand into customer success, sales, recruiting, procurement, operations, etc. I believe human communication is the bottleneck slowing down the time between idea and implementation in a business. I believe that by connecting communication, intelligence, and execution into one layer, we can dramatically reduce the amount of humans touching one problem in order to solve it."
+        category="Founder"
+      >
+        <div class="relative mt-12 flex aspect-video flex-col justify-end overflow-hidden rounded-4xl bg-foreground p-6 lg:p-24">
+          <FrntdskMark
+            class="absolute left-[52.47%] top-[-18.66%] w-[77.16%] text-background"
+            strokeWidth={0.38}
+          />
+          <Text
+            tag="p"
+            variant="displayLG"
+            class="relative font-medium leading-snug tracking-tight"
+          >
+            <span class="block text-background">Procedure demo</span>
+            <span class="block text-background/60">Frntdsk for CX</span>
+          </Text>
+        </div>
+      </Entry>
+    </div>
+  </Wrapper>
+</section>

@@ -1,0 +1,39 @@
+---
+// One row of a section list: year, title, description, category, then media.
+// The media slot closes the row, so there is no bottom padding.
+import Text from "@/components/fundations/elements/Text.astro";
+
+interface Props {
+  year: string;
+  title: string;
+  description: string;
+  category: string;
+}
+const { year, title, description, category } = Astro.props;
+---
+
+<article class="pt-12 border-t border-muted">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start">
+    <Text tag="p" variant="textXS" class="text-muted-foreground uppercase">
+      {year}
+    </Text>
+    <Text
+      tag="h3"
+      variant="displaySM"
+      class="text-foreground leading-tight font-medium tracking-tight text-pretty"
+    >
+      {title}
+    </Text>
+    <Text tag="p" variant="textSM" class="text-muted-foreground">
+      {description}
+    </Text>
+    <Text
+      tag="p"
+      variant="textXS"
+      class="text-muted-foreground uppercase lg:ml-auto lg:col-start-4"
+    >
+      {category}
+    </Text>
+  </div>
+  <slot />
+</article>

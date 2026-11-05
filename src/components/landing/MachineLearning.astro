@@ -1,0 +1,42 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import Entry from "@/components/landing/Entry.astro";
+// Visuals
+import IntentRouter from "@/components/landing/visuals/IntentRouter.astro";
+import NeuralNetwork from "@/components/landing/visuals/NeuralNetwork.astro";
+---
+
+<section class="scroll-mt-32" id="machine-learning">
+  <Wrapper variant="standard" class="py-12 lg:py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-4 items-start">
+      <Text
+        tag="h2"
+        variant="textXL"
+        class="font-medium leading-snug tracking-tight lg:col-span-3 lg:col-start-2 text-foreground text-pretty"
+      >
+        Machine learning
+      </Text>
+    </div>
+
+    <div class="flex flex-col gap-12 mt-8">
+      <Entry
+        year="2025"
+        title="Intent classifier"
+        description="DistilBERT fine tuned model for intent classification specific to pool-service messages."
+        category="PyTorch, Hugging Face"
+      >
+        <IntentRouter />
+      </Entry>
+      <Entry
+        year="2025"
+        title="Neural networks from scratch"
+        description="About two years ago, I got really into ML. I built a vanilla NN, and a CNN trained on MNIST, an RNN, and a transformer encoder layer with multi head attention. All built using only Numpy, so I could understand the real math behind them."
+        category="NumPy, Pandas"
+      >
+        <NeuralNetwork />
+      </Entry>
+    </div>
+  </Wrapper>
+</section>

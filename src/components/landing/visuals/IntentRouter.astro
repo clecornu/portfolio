@@ -1,0 +1,64 @@
+---
+import { LANES, MESSAGES, LAYER_REST } from "@/scripts/intent-router";
+
+// Resting state (no JS or reduced motion): the first message routed to its intent.
+const active = 0;
+const activeLane = MESSAGES[active].lane;
+---
+
+<div
+  class="relative mt-12 overflow-hidden rounded-4xl bg-muted text-foreground"
+  role="img"
+  aria-label="Customer messages pass through a fine-tuned DistilBERT model and are routed to an intent, for example “can you come thursday instead?” goes to reschedule_service."
+  data-intent-router
+>
+  <svg class="pointer-events-none absolute inset-0 hidden size-full lg:block" fill="none" stroke="currentColor" aria-hidden="true" data-wires>
+    {MESSAGES.map(() => <path stroke-opacity="0.12" data-wire-in />)}
+    {LANES.map(() => <path stroke-opacity="0.12" data-wire-out />)}
+    {MESSAGES.map((_, i) => <path pathLength="1" stroke-opacity="0.9" stroke-width="1.5" stroke-linecap="round" style={i === active ? "" : "stroke-dasharray: 0 2"} data-wire-in-active />)}
+    {LANES.map((_, j) => <path pathLength="1" stroke-opacity="0.9" stroke-width="1.5" stroke-linecap="round" style={j === activeLane ? "" : "stroke-dasharray: 0 2"} data-wire-out-active />)}
+  </svg>
+
+  <div class="relative grid grid-cols-1 gap-8 p-6 lg:grid-cols-[minmax(0,300px)_minmax(0,300px)_minmax(0,370px)] lg:items-start lg:justify-between lg:gap-x-14 lg:px-14 lg:py-24" aria-hidden="true">
+    <ul class="flex flex-col gap-3.5" data-messages>
+      {
+        MESSAGES.map((message, i) => (
+          <li class="relative rounded-xl bg-foreground/4 px-3.5 py-2.5 text-sm" data-message>
+            <span class="absolute inset-0 rounded-xl border border-foreground/28 bg-foreground/4" style={`opacity: ${i === active ? 1 : 0}`} data-message-active />
+            <span class="relative block truncate" style={`opacity: ${i === active ? 1 : 0.5}`} data-message-text>
+              {message.text}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex h-48.5 flex-col rounded-[20px] border border-foreground/12 bg-foreground/3 px-6 pt-7" data-model>
+      <div class="flex justify-between">
+        {LAYER_REST.map((opacity) => <span class="h-29 w-7 rounded-md bg-foreground" style={`opacity: ${opacity}`} data-layer />)}
+      </div>
+      <div class="mt-2 flex justify-between font-mono text-[10px] leading-3 text-muted-foreground/50">
+        {LAYER_REST.map((_, i) => <span class="w-7 text-center">L{i + 1}</span>)}
+      </div>
+    </div>
+
+    <div class="relative">
+      <span class="absolute inset-x-0 top-0 h-8 rounded-lg bg-foreground/7" style={`transform: translateY(${activeLane * 2}rem)`} data-lane-highlight />
+      <ul class="relative font-mono text-[13px] leading-4">
+        {
+          LANES.map((lane, j) => (
+            <li class="px-2.5 py-2" style={`opacity: ${j === activeLane ? 1 : 0.55}`} data-lane>
+              {lane}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { animateRouter } from "@/scripts/intent-router";
+
+  document.querySelectorAll<HTMLElement>("[data-intent-router]").forEach(animateRouter);
+</script>
